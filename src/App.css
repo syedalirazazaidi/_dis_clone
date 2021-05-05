@@ -1,6 +1,11 @@
 
-
+  @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300&display=swap');
+  *{
+    box-sizing: border-box;
+  }
 body{
   color: white;
   margin: 0;
+  background-color: #040714;
+  font-family: 'Blinker', sans-serif;;
 }
