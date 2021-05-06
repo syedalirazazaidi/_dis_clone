@@ -30,10 +30,16 @@ function Details() {
           <span>+</span>
         </AddButton>
         <GroupWatchButton>
-          {/* <img src="/public/images/play-icon-white.png" />
-          <span>TRAILAR</span> */}
+          <img src="/images/group-icon.png" />
         </GroupWatchButton>
       </Controls>
+      <SubTitle>2018 7m Family,Fantasy,Kids,Animation</SubTitle>
+      <Description>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non
+        quis exercitationem culpa nesciunt nihil aut nostrum explicabo
+        reprehenderit optio amet ab temporibus asperiores quasi cupiditate.
+        Voluptatum ducimus voluptates voluptas?{" "}
+      </Description>
     </Container>
   );
 }
@@ -115,4 +121,18 @@ const AddButton = styled.button`
     color: white;
   }
 `;
-const GroupWatchButton = styled.button``;
+const GroupWatchButton = styled(AddButton)`
+  background: rgb(0, 0, 0);
+`;
+const SubTitle = styled.div`
+  color: rgb(249, 249, 249);
+  font-size: 15px;
+  min-height: 20px;
+  margin-top: 26px;
+`;
+const Description = styled.div`
+  line-height: 1.4;
+  font-size: 20px;
+  margin-top: 16px;
+  color: rgb(249, 249, 249);
+`;

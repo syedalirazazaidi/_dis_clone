@@ -12,7 +12,7 @@ function Home() {
       <ImgSlider />
       <Viewer />
       <Movies />
-      <Details />
+      {/* <Details /> */}
     </Container>
   );
 }
