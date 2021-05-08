@@ -93,4 +93,5 @@ const UserImg = styled.img`
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+  object-fit: cover;
 `;
