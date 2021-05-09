@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 function Details() {
+  let { id } = useParams();
+  const [movie, setMovie] = React.useState();
+  React.useEffect(() => {
+    db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setMovie(doc.data());
+        } else {
+          <p> Loading...</p>;
+        }
+      });
+  }, []);
+  console.log(movie, "movie is");
   return (
     <Container>
       <Background>
-        <img
-          src="https://images.unsplash.com/photo-1590144662036-33bf0ebd2c7f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlzbmV5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
-          alt="bac"
-        />
+        <img src={movie && movie.backgroundImg} alt="bac" />
       </Background>
       <ImageTitle>
-        <img
-          src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1440&aspectRatio=1.78"
-          alt="img"
-        />
+        <img src={movie && movie.titleImg} alt="img" />
       </ImageTitle>
       <Controls>
         <PlayButton>
@@ -33,13 +43,8 @@ function Details() {
           <img src="/images/group-icon.png" />
         </GroupWatchButton>
       </Controls>
-      <SubTitle>2018 7m Family,Fantasy,Kids,Animation</SubTitle>
-      <Description>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non
-        quis exercitationem culpa nesciunt nihil aut nostrum explicabo
-        reprehenderit optio amet ab temporibus asperiores quasi cupiditate.
-        Voluptatum ducimus voluptates voluptas?{" "}
-      </Description>
+      <SubTitle>{movie && movie.subTitle}</SubTitle>
+      <Description>{movie && movie.description}</Description>
     </Container>
   );
 }
